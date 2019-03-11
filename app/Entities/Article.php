@@ -28,6 +28,11 @@ class Article
      */
     private $content;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $priority = 1;
+
 
     public function __construct(string $title, string $content)
     {
@@ -48,5 +53,10 @@ class Article
     public function getContent(): string
     {
         return $this->content;
+    }
+
+    public function getPriority(): int
+    {
+        return $this->priority;
     }
 }

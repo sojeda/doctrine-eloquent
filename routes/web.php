@@ -16,5 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/articles', 'ArticleController@index');
+Route::get('/articles/create', 'ArticleController@create');
 
 

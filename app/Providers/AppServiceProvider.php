@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Doctrine\Repositories\DoctrineArticleRepository;
+use App\Doctrine\Repositories\DoctrineBasicPersistRepository;
 use App\Entities\Article;
 use App\Repositories\ArticleRepository;
+use App\Repositories\BasicPersistRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -33,5 +35,7 @@ class AppServiceProvider extends ServiceProvider
                 $app['em']->getClassMetaData(Article::class)
             );
         });
+
+        $this->app->bind(BasicPersistRepository::class, DoctrineBasicPersistRepository::class);
     }
 }
