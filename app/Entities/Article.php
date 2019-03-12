@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,11 +34,15 @@ class Article
      */
     private $priority = 1;
 
+    /** @var ArrayCollection|Comment[] */
+    private $comments;
+
 
     public function __construct(string $title, string $content)
     {
         $this->title = $title;
         $this->content = $content;
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): int
@@ -58,5 +63,10 @@ class Article
     public function getPriority(): int
     {
         return $this->priority;
+    }
+
+    public function addComment(Comment $comment): void
+    {
+        $this->comments->add($comment);
     }
 }

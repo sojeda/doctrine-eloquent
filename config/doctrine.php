@@ -26,6 +26,7 @@ return [
             'meta'          => env('DOCTRINE_METADATA', 'annotations'),
             'mappings' => [
                 \App\Doctrine\Mappings\ArticleMapping::class,
+                \App\Doctrine\Mappings\CommentMapping::class,
             ],
             'connection'    => env('DB_CONNECTION', 'mysql'),
             'namespaces'    => [],

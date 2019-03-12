@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Article;
+use App\Entities\Comment;
 use App\Repositories\ArticleRepository;
 use App\Repositories\BasicPersistRepository;
 
@@ -35,6 +36,15 @@ class ArticleController extends Controller
 
         $article = new Article($title, $content);
 
+        $article->addComment(new Comment($article, 'Soy un comentario'));
+
         $this->persistRepository->persist($article);
+    }
+
+    public function addComment(int $id)
+    {
+        $article = $this->articleRepository->find($id);
+        $comment = new Comment($article, 'Soy otro commentario');
+        $this->persistRepository->persist($comment);
     }
 }

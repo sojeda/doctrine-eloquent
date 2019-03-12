@@ -7,7 +7,7 @@ use App\Entities\Comment;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 
-class ArticleMapping extends EntityMapping
+class CommentMapping extends EntityMapping
 {
     /**
      * Returns the fully qualified name of the class that this mapper maps.
@@ -16,8 +16,7 @@ class ArticleMapping extends EntityMapping
      */
     public function mapFor()
     {
-        // Here we tell Doctrine that this mapping is for the Scientist object.
-        return Article::class;
+        return Comment::class;
     }
 
     /**
@@ -34,9 +33,7 @@ class ArticleMapping extends EntityMapping
          * We could also do `bigIncrements('id')` or the whole `integer('id')->primary()->unsigned()->autoIncrement()`
          */
         $builder->increments('id');
-        $builder->string('title');
-        $builder->text('content');
-        $builder->integer('priority')->default(1);
-        $builder->oneToMany(Comment::class, 'comments')->mappedBy('article')->cascadePersist();
+        $builder->text('message');
+        $builder->manyToOne(Article::class, 'article');
     }
 }
