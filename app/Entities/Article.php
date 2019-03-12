@@ -67,6 +67,15 @@ class Article
 
     public function addComment(Comment $comment): void
     {
+        if ($this->comments->contains($comment)) {
+            return;
+        }
+
         $this->comments->add($comment);
+    }
+
+    public function removeComment(Comment $comment): void
+    {
+        $this->comments->removeElement($comment);
     }
 }
