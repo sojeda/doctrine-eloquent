@@ -1,10 +1,36 @@
+
+## Meetup Php Baires - Doctrine
+
+Recuerden que lo bueno de esto, es la capacidad de enfocarse en la lógica de negocios orientado a objetos y dejar la persistencia de datos como problema secundario.  Dejamos de pensar en tablas, y empezamos a pensar en objetos.
+
+Dentro de un proyecto de Laravel Doctrine y Eloquent pueden convivir los dos, incluso dependiendo de la arquitectura de nuestro proyecto, podemos tener repositorios que usen Eloquent y otros con Doctrine. 
+
+Al pensar en objetos podemos implementar en lenguaje ubicuo de manera mas eficaz, lo cual nos permite un lenguaje común entre los programadores y los usuarios.
+
+La definición propone nombrar las variables, métodos y clases con lenguaje del dominio de modo que sea 'autoexplicable'. Con este tipo de nombres, el código se documenta por sí mismo:
+
+```php
+$article->addComment(new Comment($article, 'Soy un comentario'));
+```
+
+¿Cuando usarlo? Cuando necesitemos dividir nuestra aplicación en pequeñas partes, seria un buen momento para probarlo. Como todo, al principio puede ser un poco confuso pero con el uso, el código queda bastante legible, desacoplado y sobretodo "navegable" (pero con esto no quiere decir que con Eloquent y phpDoc no se pueda lograr).
+
+Repito, aunque la actualización de esquema de Base de Datos que nos ofrece Doctrine es una de sus ventajas (```php artisan doctrine:schema:update``` que nos lee nuestro archivo de Mappings y actualiza segun lo que encuentre en la Base de Datos, incluyendo las claves foráneas e indices que se necesiten), no quiere decir que las migraciones desaparezcan, se siguen usando pero con otra función. 
+
+Como les dije no se trata de quien es mejor o peor ORM, sino de conocer otro tipo de herramientas que nos permitan resolver problemas de distintas formas y asi ampliar el espectro de conocimiento que tengamos dentro de la especialización de un lenguaje.
+
+Tanto el tema de Oauth2 y este, son temas bastante complejos y con mucha teoría. Que en el tiempo que tenemos en las meetup queda corto, pero al menos queda como una introducción. 
+
+Cualquier duda, estamos a la orden ya sea por aca, o tambien me pueden encontrar en el Slack de Laraveles.com 
+
 ## Install Project
 
 1. ```composer install```
 2. This package ships with a .env.example file in the root of the project. You must rename this file to just .env
 3. ```php artisan key:generate```
 4. Create Database: You must create your database on your server and on your .env file update.
-5. Test!
+6. ```php artisan doctrine:schema:create ```
+5. Test and Play!
 
 
 ## Doctrine
